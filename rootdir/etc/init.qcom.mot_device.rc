@@ -1,0 +1,35 @@
+on boot
+    # Screen off Gestures
+    chown system radio /sys/android_touch/doubletap2wake
+    chmod 0660 /sys/android_touch/doubletap2wake
+    chown system radio /sys/android_touch/gesture_swipe_right
+    chmod 0660 /sys/android_touch/gesture_swipe_right
+    chown system radio /sys/android_touch/gesture_swipe_left
+    chmod 0660 /sys/android_touch/gesture_swipe_left
+    chown system radio /sys/android_touch/gesture_swipe_down
+    chmod 0660 /sys/android_touch/gesture_swipe_down
+    chown system radio /sys/android_touch/gesture_swipe_up
+    chmod 0660 /sys/android_touch/gesture_swipe_up
+
+on post-fs-data
+    # NFC local data and nfcee xml storage
+    mkdir /data/nfc 0770 nfc nfc
+    mkdir /data/nfc/param 0770 nfc nfc
+
+service esepmdaemon /system/vendor/bin/esepmdaemon
+    class core
+    user system
+    group nfc
+
+on property:sys.boot_completed=1
+    # governor settings
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "19000 1401600:39000"
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 85
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1401600
+    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 0
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1401600:80"
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 39000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 652800
