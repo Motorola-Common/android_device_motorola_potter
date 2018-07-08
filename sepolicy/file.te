@@ -1,3 +1,0 @@
-# Screen off gestures
-type sysfs_screen_off_gestures, fs_type, sysfs_type, mlstrustedobject;
-
