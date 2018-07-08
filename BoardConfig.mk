@@ -15,12 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from motorola msm8953-common
--include device/motorola/msm8953-common/BoardConfigCommon.mk
-
 DEVICE_PATH := device/motorola/potter
-
-TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8953
@@ -61,9 +56,6 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 
 # SELinux
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
-
-# Sensor
-USE_SENSOR_MULTI_HAL := true
 
 # inherit from motorola msm8953-common
 -include device/motorola/msm8953-common/BoardConfigCommon.mk
