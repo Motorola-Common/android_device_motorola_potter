@@ -50,12 +50,16 @@ BOARD_NFC_HAL_SUFFIX := $(TARGET_BOARD_PLATFORM)
 
 # Partitions
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3510353920    #  3428080 * 1024 mmcblk0p53
+BOARD_VENDORIMAGE_PARTITION_SIZE := 665845760     #  650240  * 1024 mmcblk0p51
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 
 # SELinux
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+
+# Props
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # inherit from motorola msm8953-common
 -include device/motorola/msm8953-common/BoardConfigCommon.mk

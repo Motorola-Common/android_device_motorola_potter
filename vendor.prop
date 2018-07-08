@@ -37,6 +37,3 @@ ro.hwui.texture_cache_size=72
 
 # IMS
 persist.ims.volte=true
-
-# Radio
-rild.libargs=-d /dev/smd0
