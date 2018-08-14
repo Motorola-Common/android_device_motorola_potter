@@ -47,5 +47,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/zaf/zaf_mot_imx362.json:system/etc/zaf/zaf_mot_imx362.json \
     $(LOCAL_PATH)/configs/zaf/zaf_mot_s5k2l7.json:system/etc/zaf/zaf_mot_s5k2l7.json
 
+# Rootdir
+PRODUCT_PACKAGES += \
+    init.mmi_device.rc \
+    init.qcom_device.rc
+
 # Inherit from motorola msm8953-common
 $(call inherit-product, device/motorola/msm8953-common/common.mk)
