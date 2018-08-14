@@ -16,6 +16,10 @@
 
 DEVICE_PATH := device/motorola/potter
 
+# Asserts
+TARGET_OTA_ASSERT_DEVICE := potter,potter_retail
+
+# Kernel
 TARGET_KERNEL_CONFIG := potter_defconfig
 
 # DT2W
